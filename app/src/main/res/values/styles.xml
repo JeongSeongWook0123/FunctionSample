@@ -5,7 +5,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:splitMotionEvents">false</item>
         <item name="android:windowBackground">@color/white</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
         <item name="android:textSize">18sp</item>
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialogTheme</item>
     </style>
@@ -17,6 +17,12 @@
 
     <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
+    <style name="dialogAnim">
+        <item name="android:windowEnterAnimation">@anim/dialog_up</item>
+        <item name="android:windowExitAnimation">@anim/dialog_down</item>
     </style>
 
 </resources>

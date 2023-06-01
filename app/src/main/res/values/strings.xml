@@ -3,4 +3,9 @@
     <string name="sample">sample</string>
     <string name="recycler1_title_name">RecyclerView Sample</string>
 
+   <!--Dialog Sample-->
+    <string name="confirm">확인</string>
+    <string name="close">닫기</string>
+    <string name="dialog_content">Dialog Sample Text입니다.</string>
+
 </resources>
