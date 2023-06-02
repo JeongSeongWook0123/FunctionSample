@@ -16,16 +16,59 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_sample"
+        android:id="@+id/btn_sample1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sample"
-        android:textSize="18sp"
+        android:layout_marginTop="18dp"
+        android:paddingHorizontal="10dp"
         android:background="@drawable/btn_recycler_sample1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="@string/custom_dialog"
+        android:fontFamily="@font/pretendard_regular"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sample2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/include_title" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_sample2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/btn_recycler_sample1"
+        android:textSize="12sp"
+        android:fontFamily="@font/pretendard_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_sample1"
+        app:layout_constraintTop_toTopOf="@+id/btn_sample1"
+        tools:text="@string/custom_dialog" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_sample3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/btn_recycler_sample1"
+        android:fontFamily="@font/pretendard_regular"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sample4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sample1"
+        tools:text="@string/custom_dialog" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_sample4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/btn_recycler_sample1"
+        android:textSize="12sp"
+        android:fontFamily="@font/pretendard_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_sample3"
+        app:layout_constraintTop_toTopOf="@+id/btn_sample3"
+        tools:text="@string/custom_dialog" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

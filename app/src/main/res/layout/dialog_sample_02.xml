@@ -8,59 +8,62 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lay_content"
         android:layout_width="320dp"
-        android:layout_height="210dp"
+        android:layout_height="160dp"
+        android:background="@drawable/rounded10_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-
         <TextView
             android:id="@+id/tv_confirm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             android:fontFamily="@font/pretendard_medium"
             android:gravity="center"
             android:lineSpacingExtra="7dp"
             android:text="@string/dialog_content"
             android:textColor="@color/black"
             android:textSize="16dp"
-            android:layout_marginStart="39dp"
-            android:layout_marginEnd="39dp"
             app:layout_constraintBottom_toTopOf="@id/btn_block_no"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_block_no"
-            android:layout_width="160dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/close"
-            android:textSize="18sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/rounded10_gray"
             android:fontFamily="@font/pretendard_bold"
+            android:text="@string/cancel"
             android:textColor="@color/white"
-            tools:background="@drawable/rounded10_gray"
-            app:layout_constraintEnd_toStartOf="@id/btn_block_ok"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <Button
-            android:id="@+id/btn_block_ok"
-            android:layout_width="160dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
             android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_block_ok"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_block_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="18dp"
+            tools:background="@drawable/rounded10_gray"
+            android:fontFamily="@font/pretendard_bold"
             android:text="@string/confirm"
             android:textColor="@color/white"
-            android:fontFamily="@font/pretendard_bold"
-            tools:background="@drawable/rounded10_gray"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/btn_block_no"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toEndOf="@id/btn_block_no" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
