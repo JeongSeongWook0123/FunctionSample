@@ -1,4 +1,4 @@
-package com.jsu.functionapp.dialogSample
+package com.jsu.functionapp.dialogsample
 
 import android.app.AlertDialog
 import android.content.Context

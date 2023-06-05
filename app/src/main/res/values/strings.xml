@@ -10,4 +10,19 @@
     <string name="dialog_content">Dialog Sample Text입니다.</string>
     <string name="dialog_bottom_content">Bottom Sheet Dialog</string>
 
+    <!--Device Size Dialog-->
+    <string name="width_px">Width(px):</string>
+    <string name="height_px">Height(px):</string>
+    <string name="width_dp">Width(dp):</string>
+    <string name="height_dp">Height(dp):</string>
+    <string name="density">Density:</string>
+    <string name="status_height">StatusBar Height(px):</string>
+    <string name="navigation_height">NavigationBar Height(px):</string>
+
+    <!--url-->
+    <string name="github">https://github.com/JeongSeongwook0123</string>
+    <string name="naver">https://www.naver.com</string>
+    <string name="daum">https://www.daum.net</string>
+    <string name="nate">https://m.nate.com</string>
+
 </resources>

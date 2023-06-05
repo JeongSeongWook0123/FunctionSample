@@ -1,4 +1,4 @@
-package com.jsu.functionapp.dialogSample
+package com.jsu.functionapp.dialogsample
 
 import android.app.AlertDialog
 import android.content.Context
@@ -6,7 +6,6 @@ import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import androidx.core.content.ContextCompat
 import com.jsu.functionapp.R
-import com.jsu.functionapp.databinding.DialogSample01Binding
 import com.jsu.functionapp.databinding.DialogSample02Binding
 
 

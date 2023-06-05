@@ -1,13 +1,8 @@
-package com.jsu.functionapp.dialogSample
+package com.jsu.functionapp.dialogsample
 
 import android.app.AlertDialog
-import android.app.Dialog
-import android.util.Log
 import android.view.Gravity
-import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.viewbinding.ViewBinding
 import com.jsu.functionapp.R
 
 

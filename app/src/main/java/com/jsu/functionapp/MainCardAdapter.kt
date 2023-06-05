@@ -2,15 +2,14 @@ package com.jsu.functionapp
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.jsu.functionapp.databinding.ListviewCardViewMainBinding
-import com.jsu.functionapp.databinding.ListviewRecyclerSampleBinding
-import com.jsu.functionapp.dialogSample.DialogSample01Activity
+import com.jsu.functionapp.dialogsample.DialogSample01Activity
 import com.jsu.functionapp.recyclersample.RecyclerViewSample01Activit
+import com.jsu.functionapp.webviewsample.WebViewListActivity
 
 
 class MainCardAdapter(
@@ -47,6 +46,10 @@ class MainCardAdapter(
                         }
                         "Device" -> {
                             sizeInvoke.invoke()
+                        }
+                        "WebView" -> {
+                            intent = Intent(context,WebViewListActivity::class.java)
+                            context.startActivity(intent)
                         }
                         else -> {
                             Toast.makeText(context,"기능 개발 중 입니다.",Toast.LENGTH_SHORT).show()

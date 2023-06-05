@@ -1,14 +1,9 @@
-package com.jsu.functionapp.dialogSample
+package com.jsu.functionapp.dialogsample
 
 import android.app.Activity
-import android.graphics.Bitmap
-import android.graphics.drawable.GradientDrawable
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.jsu.functionapp.R
 import com.jsu.functionapp.databinding.ListviewVpImageBinding
 
 class DialogViewPagerAdapter(val context: Activity, private val imageArray: ArrayList<Int>):

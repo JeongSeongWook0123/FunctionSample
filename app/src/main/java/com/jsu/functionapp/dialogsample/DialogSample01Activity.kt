@@ -1,11 +1,8 @@
-package com.jsu.functionapp.dialogSample
+package com.jsu.functionapp.dialogsample
 
-import android.graphics.drawable.GradientDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jsu.functionapp.BaseVBActivity
@@ -13,7 +10,6 @@ import com.jsu.functionapp.R
 import com.jsu.functionapp.databinding.ActivityDialogSample01Binding
 import com.jsu.functionapp.databinding.DialogBottomSheetSample01Binding
 import com.jsu.functionapp.databinding.DialogBottomSheetSample02Binding
-import java.util.Locale
 
 class DialogSample01Activity : BaseVBActivity() {
     private lateinit var binding: ActivityDialogSample01Binding
