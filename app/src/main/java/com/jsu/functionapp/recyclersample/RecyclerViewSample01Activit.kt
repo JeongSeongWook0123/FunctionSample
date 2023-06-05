@@ -2,11 +2,13 @@ package com.jsu.functionapp.recyclersample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jsu.functionapp.BaseVBActivity
 import com.jsu.functionapp.R
 import com.jsu.functionapp.databinding.ActivityRecyclerViewSampleBinding
 
-class RecyclerViewSample01Activit : AppCompatActivity() {
+class RecyclerViewSample01Activit : BaseVBActivity() {
     private val activity = this
     private lateinit var binding: ActivityRecyclerViewSampleBinding
     private var adtSample : RecyclerViewSample01Adapter? = null
@@ -22,8 +24,7 @@ class RecyclerViewSample01Activit : AppCompatActivity() {
 
 
     private fun viewInit() {
-
-        binding.includeTitle.tvTitle.text = activity.getString(R.string.recycler1_title_name)
+        setTitleBar("RecyclerView Sample Page", View.OnClickListener { onBackPressed()})
         adtSetting()
     }
 

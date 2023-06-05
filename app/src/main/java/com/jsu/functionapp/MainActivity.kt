@@ -3,11 +3,12 @@ package com.jsu.functionapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jsu.functionapp.databinding.ActivityMainBinding
 import com.jsu.functionapp.recyclersample.RecyclerViewSample01Activit
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseVBActivity() {
 
     private val activity = this
     private lateinit var binding: ActivityMainBinding
@@ -21,7 +22,10 @@ class MainActivity : AppCompatActivity() {
         viewInit()
     }
 
+
     private fun viewInit() {
+
+        setTitleBar("Main", null)
 
         adtSetting()
 

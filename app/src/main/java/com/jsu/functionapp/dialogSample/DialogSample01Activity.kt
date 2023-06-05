@@ -3,17 +3,19 @@ package com.jsu.functionapp.dialogSample
 import android.graphics.drawable.GradientDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.jsu.functionapp.BaseVBActivity
 import com.jsu.functionapp.R
 import com.jsu.functionapp.databinding.ActivityDialogSample01Binding
 import com.jsu.functionapp.databinding.DialogBottomSheetSample01Binding
 import com.jsu.functionapp.databinding.DialogBottomSheetSample02Binding
 import java.util.Locale
 
-class DialogSample01Activity : AppCompatActivity() {
+class DialogSample01Activity : BaseVBActivity() {
     private lateinit var binding: ActivityDialogSample01Binding
     private var activity = this
 
@@ -36,9 +38,7 @@ class DialogSample01Activity : AppCompatActivity() {
 
     private fun viewInit() {
 
-
-        binding.includeTitle.tvTitle.text = activity.getString(R.string.dialog_title_name)
-
+        setTitleBar("Dialog Sample Page", View.OnClickListener { onBackPressed() })
 
         val arrayBtnSample = arrayListOf(
             binding.btnSample1, binding.btnSample2,
