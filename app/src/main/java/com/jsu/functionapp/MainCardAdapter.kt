@@ -16,7 +16,8 @@ import com.jsu.functionapp.recyclersample.RecyclerViewSample01Activit
 class MainCardAdapter(
     private var context: Context,
     private var arrayCardName: ArrayList<String>,
-    private var intent : Intent? = null
+    private var intent : Intent? = null,
+    private val sizeInvoke: () -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -44,15 +45,17 @@ class MainCardAdapter(
                             intent = Intent(context,DialogSample01Activity::class.java)
                             context.startActivity(intent)
                         }
+                        "Device" -> {
+                            sizeInvoke.invoke()
+                        }
                         else -> {
                             Toast.makeText(context,"기능 개발 중 입니다.",Toast.LENGTH_SHORT).show()
                         }
                     }
 
                 }
-
-
             }
+
         }
 
     }
