@@ -21,8 +21,8 @@
 
     <!--url-->
     <string name="github">https://github.com/JeongSeongwook0123</string>
-    <string name="naver">https://www.naver.com</string>
-    <string name="daum">https://www.daum.net</string>
+    <string name="naver">https://m.naver.com</string>
+    <string name="daum">https://m.daum.net</string>
     <string name="nate">https://m.nate.com</string>
 
 </resources>

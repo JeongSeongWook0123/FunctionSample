@@ -12,7 +12,7 @@ import com.jsu.functionapp.databinding.ListviewWebviewBinding
 class WebViewListAdapter(
     private var context: Context,
     private var arrayUrl: ArrayList<String>,
-    val handler : (url: String) -> Unit
+    private val handler : (url: String) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

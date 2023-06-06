@@ -39,8 +39,8 @@ class MainActivity : BaseVBActivity() {
         adtCard = MainCardAdapter(activity, arrayAdtName) {
             //Measure Device Size
             measureDeviceSize()
-
         }
+
         binding.rvList.adapter = adtCard
         binding.rvList.layoutManager = GridLayoutManager(activity, 3)
 
