@@ -1,11 +1,9 @@
-package com.jsu.functionapp.webviewsample
+package com.jsu.functionapp.webview_sample
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.jsu.functionapp.R
-import com.jsu.functionapp.databinding.ListviewRecyclerSampleBinding
 import com.jsu.functionapp.databinding.ListviewWebviewBinding
 
 

@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- WebView 사용시 Internet 권한 필요 -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- '저장공간' 갤러리-카메라 사진저장 권한 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- '저장공간' 외부저장소 접근권한 -->
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -15,16 +22,22 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".webviewsample.WebViewListActivity"
+            android:name=".gallery_sample.GalleryPhotoActivity"
             android:exported="false" />
         <activity
-            android:name=".webviewsample.WebViewSample01Activity"
+            android:name=".gallery_sample.GallerySampleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".webview_sample.WebViewListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".webview_sample.WebViewSample01Activity"
             android:exported="false" />
         <activity
             android:name=".BaseVBActivity"
             android:exported="false" />
         <activity
-            android:name=".recyclersample.RecyclerViewSample01Activit"
+            android:name=".recycler_sample.RecyclerViewSample01Activit"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
@@ -36,8 +49,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".dialogsample.DialogSample01Activity"
+            android:name=".dialog_sample.DialogSample01Activity"
             android:exported="false"></activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.jsu.functionapp.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

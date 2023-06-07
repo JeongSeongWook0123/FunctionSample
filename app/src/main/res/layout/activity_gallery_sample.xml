@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gallery_sample.GallerySampleActivity">
+
+    <include
+        android:id="@+id/include_title"
+        layout="@layout/titlebar_main"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_move"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:paddingStart="12sp"
+        android:paddingEnd="12sp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/rounded10_gray"
+        android:fontFamily="@font/pretendard_regular"
+        android:textAlignment="center"
+        android:text="갤러리 앱으로 이동"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/include_title" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_photo"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/rounded10_gray"
+        android:fontFamily="@font/pretendard_regular"
+        android:paddingStart="12sp"
+        android:paddingEnd="12sp"
+        android:text="사진 촬영"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/btn_move"
+        app:layout_constraintTop_toBottomOf="@id/include_title" />
+
+    <ImageView
+        android:id="@+id/image_sample"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="18dp"
+        tools:background="@drawable/image_sample01"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_move" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.jsu.functionapp.databinding.ListviewCardViewMainBinding
-import com.jsu.functionapp.dialogsample.DialogSample01Activity
-import com.jsu.functionapp.recyclersample.RecyclerViewSample01Activit
-import com.jsu.functionapp.webviewsample.WebViewListActivity
+import com.jsu.functionapp.dialog_sample.DialogSample01Activity
+import com.jsu.functionapp.gallery_sample.GallerySampleActivity
+import com.jsu.functionapp.recycler_sample.RecyclerViewSample01Activit
+import com.jsu.functionapp.webview_sample.WebViewListActivity
 
 
 class MainCardAdapter(
@@ -49,6 +50,10 @@ class MainCardAdapter(
                         }
                         "WebView" -> {
                             intent = Intent(context,WebViewListActivity::class.java)
+                            context.startActivity(intent)
+                        }
+                        "Gallery" -> {
+                            intent = Intent(context,GallerySampleActivity::class.java)
                             context.startActivity(intent)
                         }
                         else -> {

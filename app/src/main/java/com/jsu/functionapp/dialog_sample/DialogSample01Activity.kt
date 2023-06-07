@@ -1,4 +1,4 @@
-package com.jsu.functionapp.dialogsample
+package com.jsu.functionapp.dialog_sample
 
 import android.os.Bundle
 import android.view.View

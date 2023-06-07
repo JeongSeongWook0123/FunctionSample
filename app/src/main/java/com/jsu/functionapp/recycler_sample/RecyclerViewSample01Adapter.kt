@@ -1,4 +1,4 @@
-package com.jsu.functionapp.recyclersample
+package com.jsu.functionapp.recycler_sample
 
 import android.content.Context
 import android.view.LayoutInflater

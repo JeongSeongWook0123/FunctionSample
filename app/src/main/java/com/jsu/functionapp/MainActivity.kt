@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jsu.functionapp.databinding.ActivityMainBinding
-import com.jsu.functionapp.dialogsample.DeviceSizeDialog
+import com.jsu.functionapp.dialog_sample.DeviceSizeDialog
 
 class MainActivity : BaseVBActivity() {
 
@@ -34,7 +34,9 @@ class MainActivity : BaseVBActivity() {
 
         val arrayAdtName = arrayListOf<String>(
             "Recycler View Sample", "Dialog Sample",
-            "Device Size Measure", "WebView Sample", "Test Sample", "Test Sample"
+            "Device Size Measure", "WebView Sample",
+            "Gallery Sample", "Test Sample",
+            "Test Sample"
         )
         adtCard = MainCardAdapter(activity, arrayAdtName) {
             //Measure Device Size
