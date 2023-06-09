@@ -23,7 +23,9 @@ data class MediaStoreImage(
                     oldItem: MediaStoreImage,
                     newItem: MediaStoreImage
             ): Boolean = oldItem == newItem
+
         }
+
     }
 
 

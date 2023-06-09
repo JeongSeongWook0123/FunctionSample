@@ -16,27 +16,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_move"
+        android:id="@+id/btn_gallery"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        android:paddingStart="12sp"
-        android:paddingEnd="12sp"
-        android:layout_marginStart="18dp"
         android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
         android:background="@drawable/rounded10_gray"
         android:fontFamily="@font/pretendard_regular"
-        android:textAlignment="center"
+        android:paddingStart="12sp"
+        android:paddingEnd="12sp"
         android:text="갤러리 앱으로 이동"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_capture"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/include_title" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_photo"
+        android:id="@+id/btn_capture"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        android:layout_marginStart="18dp"
         android:layout_marginTop="18dp"
         android:background="@drawable/rounded10_gray"
         android:fontFamily="@font/pretendard_regular"
@@ -46,7 +47,8 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/btn_move"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_gallery"
         app:layout_constraintTop_toBottomOf="@id/include_title" />
 
     <ImageView
@@ -56,11 +58,11 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="18dp"
-        tools:background="@drawable/image_sample01"
+        tools:src="@drawable/image_sample01"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_move" />
+        app:layout_constraintTop_toBottomOf="@id/btn_gallery" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

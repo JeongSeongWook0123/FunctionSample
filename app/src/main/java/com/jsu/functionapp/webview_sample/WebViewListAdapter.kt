@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.jsu.functionapp.databinding.ListviewWebviewBinding
+import com.jsu.functionapp.util.ExtensionFunction.onThrottleClick
 
 
 class WebViewListAdapter(
@@ -28,7 +29,7 @@ class WebViewListAdapter(
 
                 holder.tvUrl.text = arrayUrl[position]
 
-                holder.view.setOnClickListener { handler.invoke(arrayUrl[position]) }
+                holder.view.onThrottleClick(1000) { handler.invoke(arrayUrl[position]) }
 
             }
         }

@@ -10,6 +10,7 @@ import com.jsu.functionapp.databinding.ListviewCardViewMainBinding
 import com.jsu.functionapp.dialog_sample.DialogSample01Activity
 import com.jsu.functionapp.gallery_sample.GallerySampleActivity
 import com.jsu.functionapp.recycler_sample.RecyclerViewSample01Activit
+import com.jsu.functionapp.util.ExtensionFunction.onThrottleClick
 import com.jsu.functionapp.webview_sample.WebViewListActivity
 
 
@@ -35,7 +36,7 @@ class MainCardAdapter(
 
                 holder.tvName.text = arrayCardName[position]
 
-                holder.view.setOnClickListener {
+                holder.view.onThrottleClick(1500) {
                     when(arrayCardName[position].split(" ")[0]){
                         "Recycler" -> {
                             intent = Intent(context,RecyclerViewSample01Activit::class.java)

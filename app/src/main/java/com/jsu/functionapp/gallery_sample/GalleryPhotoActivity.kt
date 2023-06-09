@@ -1,5 +1,6 @@
 package com.jsu.functionapp.gallery_sample
 
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.jsu.functionapp.BaseVBActivity
 import com.jsu.functionapp.R
 import com.jsu.functionapp.databinding.ActivityGalleryPhotoBinding
+import com.jsu.functionapp.util.ExtensionFunction.onThrottleClick
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -24,6 +26,7 @@ class GalleryPhotoActivity : BaseVBActivity() {
 
     private var adtPhoto : GalleryPhotoAdapter? = null
     private val images = MutableLiveData<List<MediaStoreImage?>>()
+    private var imageUrl: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +47,13 @@ class GalleryPhotoActivity : BaseVBActivity() {
         }
 
         adtSetting()
+
+        binding.btnConfirm.onThrottleClick(1500) {
+            intent = Intent(activity, GallerySampleActivity::class.java)
+            intent.data = imageUrl
+            setResult(RESULT_OK, intent)
+            finish()
+        }
 
     }
 
@@ -88,27 +98,20 @@ class GalleryPhotoActivity : BaseVBActivity() {
                     dummyData = image
                     galleryImageList.add(image)
 
-                    //22.07.07 jsu 갤러리에 이미지가 없는 경우 ANR발생 수정
                 }
             }
 
         }
-        if (dummyData == null) {
-            withContext(Dispatchers.Main) {
-                galleryImageList.add(0, dummyData)
-                Toast.makeText(activity, "갤러리에 저장된 이미지가 없습니다.", Toast.LENGTH_LONG).show()
-            }
-        } else {
-            dummyData?.let { galleryImageList.add(0, it) }
-        }
-        // dummyData?.let { galleryImageList.add(0, it) }
 
         return galleryImageList
+
     }
 
     private fun adtSetting() {
 
-        adtPhoto = GalleryPhotoAdapter(activity)
+        adtPhoto = GalleryPhotoAdapter(activity){
+            imageUrl = it
+        }
 
         binding.rvPhoto.adapter = adtPhoto
         binding.rvPhoto.layoutManager = GridLayoutManager(activity,3)

@@ -10,6 +10,7 @@ import com.jsu.functionapp.R
 import com.jsu.functionapp.databinding.ActivityDialogSample01Binding
 import com.jsu.functionapp.databinding.DialogBottomSheetSample01Binding
 import com.jsu.functionapp.databinding.DialogBottomSheetSample02Binding
+import com.jsu.functionapp.util.ExtensionFunction.onThrottleClick
 
 class DialogSample01Activity : BaseVBActivity() {
     private lateinit var binding: ActivityDialogSample01Binding
@@ -46,7 +47,7 @@ class DialogSample01Activity : BaseVBActivity() {
         }
 
 
-        binding.btnSample1.setOnClickListener {
+        binding.btnSample1.onThrottleClick(1000) {
 
             dialogSample01 = Sample01Dialog(activity)
             dialogSample01?.create()
@@ -54,7 +55,7 @@ class DialogSample01Activity : BaseVBActivity() {
 
         }
 
-        binding.btnSample2.setOnClickListener {
+        binding.btnSample2.onThrottleClick(1000) {
 
             dialogSample02 = Sample02Dialog(activity)
             dialogSample02?.create()
@@ -62,11 +63,11 @@ class DialogSample01Activity : BaseVBActivity() {
 
         }
 
-        binding.btnSample3.setOnClickListener {
+        binding.btnSample3.onThrottleClick(1000) {
             bottomSheet01Setting()
         }
 
-        binding.btnSample4.setOnClickListener {
+        binding.btnSample4.onThrottleClick(1000) {
             bottomSheet02Setting()
         }
 

@@ -34,6 +34,7 @@ import java.io.InputStream
 import java.lang.NullPointerException
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 class GallerySampleActivity : BaseVBActivity() {
 
@@ -44,23 +45,17 @@ class GallerySampleActivity : BaseVBActivity() {
     private var name: String? = null
     private var photoFile: File? = null
 
-    // 필요한 권한array Q(29)10 R(30)11
-    private val arrNeedPermit_Q = arrayOf(
-        android.Manifest.permission.CAMERA,
-        android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-    )
+    private val permissionCamera = android.Manifest.permission.CAMERA
+    private val permissionStroage = android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 
-    private val arrNeedPermit_R = arrayOf(android.Manifest.permission.CAMERA)
-    private lateinit var arrNotPermit: ArrayList<String>  // 거절된 권한
+    private val codeStroage = 0x1145
+    private val codeCamera = 0x1146
 
-    private val Permission_CAMERA = 0x1145
-
+    private var arrDeniedPermit: ArrayList<String> = arrayListOf()  // 거절된 권한
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGallerySampleBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        arrNotPermit = ArrayList()
 
         viewInit()
 
@@ -68,84 +63,79 @@ class GallerySampleActivity : BaseVBActivity() {
 
     private fun viewInit() {
 
-
         setTitleBar("Gallery Sample", View.OnClickListener { onBackPressed() })
 
-        //권한 체크
-        if(!permitChecks()) {
-            requestPermit()
+        binding.btnGallery.setOnClickListener {
+            permitCheckStorage(permissionStroage, codeStroage)
         }
 
-        binding.btnMove.setOnClickListener {
-            val intent = Intent(activity,GalleryPhotoActivity::class.java)
-            startActivity(intent)
-            Log.d("tjddnr", "permit: ${permitChecks()}")
-        }
-
-        binding.btnPhoto.setOnClickListener {
-
-             dispatchTakePictureIntent()
-
-
+        binding.btnCapture.setOnClickListener {
+            permitCheckStorage(permissionCamera, codeCamera)
         }
 
     }
 
-    //Todo.. Button눌렀을 때 권한 따로 분리하기 (카메라 권한, 외부저장소 접근 권한)
-    private fun permitChecks(): Boolean {
-        arrNotPermit.clear()
+    private fun permitCheckStorage(permission: String, resultCode: Int) {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) { //Android11, API 30 이상
-            arrNeedPermit_R.forEach { needPermit ->
-                when (ContextCompat.checkSelfPermission(this, needPermit)) {
-                    PackageManager.PERMISSION_GRANTED -> Log.d("tjddnr", "필요 권한 있음: $needPermit")
+        arrDeniedPermit.clear()
 
-                    PackageManager.PERMISSION_DENIED -> arrNotPermit.add(needPermit)
-
-                }
-            }
-        } else {
-            //Android10, API 29 이하
-            arrNeedPermit_Q.forEach { needPermit ->
-                when (ContextCompat.checkSelfPermission(this, needPermit)) {
-                    PackageManager.PERMISSION_GRANTED -> Log.d("tjddnr", "필요 권한 있음: $needPermit")
-
-                    PackageManager.PERMISSION_DENIED -> arrNotPermit.add(needPermit)
-                }
-            }
-
-        }
-
-        return arrNotPermit.size == 0
-    }
-
-    private fun requestPermit() {
-        // 권한 없는 상태
-        arrNotPermit.forEach { notPermit -> //android.permission.WRITE_EXTERNAL_STORAGE or android.permission.CAMERA
-            Log.d("tjddnr","notPermit: ${notPermit}")
-            when (activity.shouldShowRequestPermissionRationale(notPermit)) {
-                //true -> 거부한적 있을경우
-                true -> {
-                    Log.d("tjddnr", "권한X, 이전에 권한 거부한적 있음 , M(23) 안드6 이상")
-
-                    Toast.makeText(activity, "카메라 및 저장공간 권한을 허용해 주세요.", Toast.LENGTH_LONG).show()
-
-                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        data = Uri.fromParts("package", packageName, null)
+        when (ContextCompat.checkSelfPermission(activity, permission)) {
+            PackageManager.PERMISSION_GRANTED -> {  //권한이 허용된 상태
+                when (permission) {
+                    permissionStroage -> {  //외부저장소 권한 허용
+                        val intent = Intent(activity, GalleryPhotoActivity::class.java)
+                        galleryRequestForResult.launch(intent)
                     }
-                    startActivity(intent)
-                    finish()
+
+                    permissionCamera -> {   //카메라 권한 허용
+                        dispatchTakePictureIntent()
+                    }
                 }
 
-                //첫 권한요청 or 다시보지않기(2번거절) 일 경우
-                else -> Log.d("tjddnr", "권한X, 최초 요청 / 다시보지않기(2번거절) , M(23) 안드6 이상")
+            }
+
+            PackageManager.PERMISSION_DENIED -> {   //권한을 허용되지 않은 상태에서 버튼 클릭 시 시스템 설정으로 이동
+                arrDeniedPermit.add(permission)
+
+                when (activity.shouldShowRequestPermissionRationale(permission)) {
+                    true -> {   //권한을 거부한적이 있는 경우 -> 시스템 권한 설정으로 이동
+                        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            data = Uri.fromParts("package", packageName, null)
+                        }
+                        startActivity(intent)
+                    }
+
+                    else -> Log.d("tjddnr", "권한X, 최초 요청 / 다시보지않기(2번거절) , M(23) 안드6 이상")
+
+                }
+                ActivityCompat.requestPermissions(this, arrDeniedPermit.toTypedArray(), resultCode)
             }
         }
 
-        Log.d("tjddnr", "권한X, 요청 $arrNotPermit")
-        ActivityCompat.requestPermissions(this, arrNotPermit.toTypedArray(), Permission_CAMERA)
+    }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+
+        if(grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
+
+            when (requestCode) {
+                codeStroage -> {
+                    val intent = Intent(activity, GalleryPhotoActivity::class.java)
+                    galleryRequestForResult.launch(intent)
+                }
+                codeCamera -> {
+                    dispatchTakePictureIntent()
+                }
+            }
+
+        }
 
     }
 
@@ -155,7 +145,7 @@ class GallerySampleActivity : BaseVBActivity() {
     private fun createImageFile(): File {
 
         var storageDir: File? = null
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.KOREA).format(Date())
         val name = "JPEG_${timeStamp}_" // Image Name ex)JPEG_20230607135400
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) { //API29
@@ -169,6 +159,22 @@ class GallerySampleActivity : BaseVBActivity() {
         return File.createTempFile(name, ".jpg", storageDir)
             .apply { currentPhotoPath = absolutePath }
     }
+
+    private val galleryRequestForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+
+            if (result.resultCode == RESULT_OK) {
+
+                Log.d("tjddnr","imgUrl: ${result.data}")
+                Glide.with(activity)
+                    .load(result.data?.data)
+                    .placeholder(R.drawable.loading)
+                    .error(R.drawable.error)
+                    .apply(RequestOptions.fitCenterTransform())
+                    .into(binding.imageSample)
+            }
+
+        }
 
     //카메라 사진 촬영 후
     private val cameraRequsetForResult =
@@ -214,7 +220,8 @@ class GallerySampleActivity : BaseVBActivity() {
 
         photoFile?.also {
 
-            val photoURI: Uri = FileProvider.getUriForFile(this, "com.jsu.functionapp.fileprovider", it)
+            val photoURI: Uri =
+                FileProvider.getUriForFile(this, "com.jsu.functionapp.fileprovider", it)
 
             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
         }
@@ -237,7 +244,9 @@ class GallerySampleActivity : BaseVBActivity() {
 
             var pdf: ParcelFileDescriptor? = null
 
-            if (item != null) { pdf = contentResolver.openFileDescriptor(item, "w", null) }
+            if (item != null) {
+                pdf = contentResolver.openFileDescriptor(item, "w", null)
+            }
 
             if (pdf == null) {
                 Log.d("로그", "null")
