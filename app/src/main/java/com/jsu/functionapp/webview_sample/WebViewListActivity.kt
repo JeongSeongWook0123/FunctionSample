@@ -35,10 +35,10 @@ class WebViewListActivity : BaseVBActivity() {
         adtWebview = WebViewListAdapter(activity, arrayUrl) {
 
             when(it) {
-                "GitHub" -> {arrayPutUrl = resources.getString(R.string.github)}
-                "Naver" -> {arrayPutUrl = resources.getString(R.string.naver)}
-                "Daum" -> {arrayPutUrl = resources.getString(R.string.daum)}
-                "Nate" -> {arrayPutUrl = resources.getString(R.string.nate)}
+                "GitHub" -> arrayPutUrl = resources.getString(R.string.github)
+                "Naver"  -> arrayPutUrl = resources.getString(R.string.naver)
+                "Daum"   -> arrayPutUrl = resources.getString(R.string.daum)
+                "Nate"   -> arrayPutUrl = resources.getString(R.string.nate)
             }
 
             val intent = Intent(activity, WebViewSample01Activity::class.java)

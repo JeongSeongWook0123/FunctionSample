@@ -19,6 +19,7 @@ class MainActivity : BaseVBActivity() {
         setContentView(binding.root)
         //test1
         viewInit()
+        getKeyHash()
     }
 
 
@@ -35,9 +36,10 @@ class MainActivity : BaseVBActivity() {
         val arrayAdtName = arrayListOf<String>(
             "Recycler View Sample", "Dialog Sample",
             "Device Size Measure", "WebView Sample",
-            "Gallery Sample", "Test Sample",
+            "Gallery Sample", "Login Sample",
             "Test Sample"
         )
+
         adtCard = MainCardAdapter(activity, arrayAdtName) {
             //Measure Device Size
             measureDeviceSize()
@@ -48,7 +50,6 @@ class MainActivity : BaseVBActivity() {
 
     }
 
-    @SuppressLint("InternalInsetResource")
     private fun measureDeviceSize() {
 
         //모바일 기기 해상도 dp

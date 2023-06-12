@@ -25,4 +25,9 @@
     <string name="daum">https://m.daum.net</string>
     <string name="nate">https://m.nate.com</string>
 
+    <!--Login-->
+    <string name="naver_login">네이버 로그인</string>
+
+
+
 </resources>

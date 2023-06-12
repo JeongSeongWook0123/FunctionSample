@@ -57,6 +57,10 @@ class MainCardAdapter(
                             intent = Intent(context,GallerySampleActivity::class.java)
                             context.startActivity(intent)
                         }
+                        "Login" -> {
+//                            intent = Intent(context,LoginSampleActivity::class.java)
+//                            context.startActivity(intent)
+                        }
                         else -> {
                             Toast.makeText(context,"기능 개발 중 입니다.",Toast.LENGTH_SHORT).show()
                         }
