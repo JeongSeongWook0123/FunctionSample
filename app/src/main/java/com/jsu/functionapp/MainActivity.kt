@@ -17,7 +17,7 @@ class MainActivity : BaseVBActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //test1
+
         viewInit()
         getKeyHash()
     }
