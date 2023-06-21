@@ -34,6 +34,7 @@ class MainCardAdapter(
         when (holder) {
             is SampleListHolder -> {
 
+                //git test
                 holder.tvName.text = arrayCardName[position]
 
                 holder.view.onThrottleClick(1500) {
